@@ -1,13 +1,17 @@
 <header
-  class="w-full h-full flex flex-row justify-between lg:justify-end items-center bg-primaryApp lg:bg-lightApp shadow"
+  class="w-full h-full flex flex-row justify-between lg:justify-end items-center bg-white lg:bg-lightApp"
 >
-  <div
-    class="lg:block hidden px-6 lg:px-8 text-2xl lg:text-sm text-primaryApp/80"
-  >
+  <div class="lg:block hidden px-6 lg:px-8 text-2xl lg:text-sm text-darkMoovd">
     Language
   </div>
   <div class="block lg:hidden pl-6 md:pl-10 lg:pl-12">
-    <h1 class="text-lg font-bold text-lightApp">Movie App</h1>
+    <h1 class="text-lg font-bold text-lightApp">
+      <img
+        src="assets/logo/moovd_logo.svg"
+        alt="Moovd Logo"
+        class="w-[100px]"
+      />
+    </h1>
   </div>
   <div
     class="block lg:hidden pr-6 md:pr-10 lg:pr-12 text-2xl lg:text-sm text-lightApp"
@@ -26,14 +30,14 @@
     ></fa-icon>
   </div>
 </header>
+
 <div
   class="w-full h-full block lg:hidden"
   [ngClass]="{ block: isOpen == true, hidden: isOpen != true }"
 >
   <ul
-    class="bg-lightApp border-b border-primaryApp flex flex-col justify-start items-center gap-3 py-4 text-sm"
+    class="bg-white border-b border-primaryMoovd flex flex-col justify-start items-center gap-3 py-4 text-sm"
   >
-    <li [routerLink]="['/favorites']" class="cursor-pointer">🔥 My Favorite</li>
-    <li [routerLink]="['/movies']" class="cursor-pointer">🍿 Movie</li>
+    <li [routerLink]="['/gps']" class="cursor-pointer">GPS</li>
   </ul>
 </div>
