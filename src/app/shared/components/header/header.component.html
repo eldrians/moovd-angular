@@ -1,33 +1,33 @@
-<header
-  class="w-full h-full flex flex-row justify-between lg:justify-end items-center bg-white lg:bg-lightApp"
->
-  <div class="lg:block hidden px-6 lg:px-8 text-2xl lg:text-sm text-darkMoovd">
-    Language
-  </div>
-  <div class="block lg:hidden pl-6 md:pl-10 lg:pl-12">
-    <h1 class="text-lg font-bold text-lightApp">
-      <img
-        src="assets/logo/moovd_logo.svg"
-        alt="Moovd Logo"
-        class="w-[100px]"
-      />
-    </h1>
-  </div>
+<header class="w-full h-full flex items-center justify-center bg-lightMoovd">
   <div
-    class="block lg:hidden pr-6 md:pr-10 lg:pr-12 text-2xl lg:text-sm text-lightApp"
+    class="hidden w-full flex-row justify-between items-center bg-white rounded shadow py-2 px-4 lg:flex lg:justify-end lg:mr-2"
   >
-    <fa-icon
-      *ngIf="isOpen == false"
-      [icon]="faBars"
-      (click)="menuClick(!isOpen)"
-      class="cursor-pointer"
-    ></fa-icon>
-    <fa-icon
-      *ngIf="isOpen == true"
-      [icon]="faX"
-      (click)="menuClick(!isOpen)"
-      class="cursor-pointer"
-    ></fa-icon>
+    <div class="text-2xl lg:text-sm text-darkMoovd">Language</div>
+  </div>
+  <div class="w-full flex lg:hidden justify-between items-center">
+    <div class="pl-6 md:pl-10 lg:pl-12">
+      <h1 class="text-lg font-bold text-lightApp">
+        <img
+          src="assets/logo/moovd_logo.svg"
+          alt="Moovd Logo"
+          class="w-[100px]"
+        />
+      </h1>
+    </div>
+    <div class="pr-6 md:pr-10 lg:pr-12 text-2xl lg:text-sm text-lightApp">
+      <fa-icon
+        *ngIf="isOpen == false"
+        [icon]="faBars"
+        (click)="menuClick(!isOpen)"
+        class="cursor-pointer"
+      ></fa-icon>
+      <fa-icon
+        *ngIf="isOpen == true"
+        [icon]="faX"
+        (click)="menuClick(!isOpen)"
+        class="cursor-pointer"
+      ></fa-icon>
+    </div>
   </div>
 </header>
 
