@@ -4,12 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primaryApp: "#032541",
-        secondaryApp: "#0EB6DE",
-        lightApp: "#ffffff",
-        darkApp: "#0D0D0D",
-        redSD: "#FA414F",
-        graySD: "#637591",
+        darkMoovd: "#3C5060",
+        lightMoovd: "#F2F8F8",
+        primaryMoovd: "#87CCCF",
+        secondaryMoovd: "#AE497B",
+        grayMoovd: "#45586B",
       },
     },
   },
