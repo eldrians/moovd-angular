@@ -1,1 +1,39 @@
-<p>header works!</p>
+<header
+  class="w-full h-full flex flex-row justify-between lg:justify-end items-center bg-primaryApp lg:bg-lightApp shadow"
+>
+  <div
+    class="lg:block hidden px-6 lg:px-8 text-2xl lg:text-sm text-primaryApp/80"
+  >
+    Language
+  </div>
+  <div class="block lg:hidden pl-6 md:pl-10 lg:pl-12">
+    <h1 class="text-lg font-bold text-lightApp">Movie App</h1>
+  </div>
+  <div
+    class="block lg:hidden pr-6 md:pr-10 lg:pr-12 text-2xl lg:text-sm text-lightApp"
+  >
+    <fa-icon
+      *ngIf="isOpen == false"
+      [icon]="faBars"
+      (click)="menuClick(!isOpen)"
+      class="cursor-pointer"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="isOpen == true"
+      [icon]="faX"
+      (click)="menuClick(!isOpen)"
+      class="cursor-pointer"
+    ></fa-icon>
+  </div>
+</header>
+<div
+  class="w-full h-full block lg:hidden"
+  [ngClass]="{ block: isOpen == true, hidden: isOpen != true }"
+>
+  <ul
+    class="bg-lightApp border-b border-primaryApp flex flex-col justify-start items-center gap-3 py-4 text-sm"
+  >
+    <li [routerLink]="['/favorites']" class="cursor-pointer">🔥 My Favorite</li>
+    <li [routerLink]="['/movies']" class="cursor-pointer">🍿 Movie</li>
+  </ul>
+</div>
