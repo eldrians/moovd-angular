@@ -5,28 +5,6 @@ export interface IGps {
   location: string;
 }
 
-export interface GpsInterface {
-  device_id: string;
-  device_type: string;
-  location?: GpsLocationInterface[];
-}
-
-export interface GpsLocationInterface {
-  location: string;
-  timestamp?: string[];
-}
-
-export interface DeviceData {
-  device_id: string;
-  device_type: string;
-  device_location: Array<{
-    location: string;
-    timestamp: string[];
-    totalTimestamp: number;
-  }>;
-  totalTimeSpent: number;
-}
-
 export interface ListGpsInterface {
   device_id: string;
   device_type: string;

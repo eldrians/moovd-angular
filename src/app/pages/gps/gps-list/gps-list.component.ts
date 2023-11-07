@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { GpsInterface, IGps } from 'src/app/core/interfaces/gps.model';
+import { ListGpsInterface } from 'src/app/core/interfaces/gps.model';
 import { GpsService } from 'src/app/core/services';
 
 @Component({
@@ -11,17 +11,16 @@ import { GpsService } from 'src/app/core/services';
   templateUrl: './gps-list.component.html',
 })
 export class GpsListComponent implements OnInit {
-  gpsItems: GpsInterface[] = [];
+  gpsLists: ListGpsInterface[] = [];
 
   constructor(private gpsServices: GpsService) {}
 
   ngOnInit(): void {
-    this.getGpsItem();
+    this.getGpsLists();
   }
-  getGpsItem() {
-    this.gpsServices.getGpsList().subscribe((res: GpsInterface[]) => {
-      console.log(res);
-      this.gpsItems = res;
+  getGpsLists() {
+    this.gpsServices.getGpsLists().subscribe((res: ListGpsInterface[]) => {
+      this.gpsLists = res;
     });
   }
 }

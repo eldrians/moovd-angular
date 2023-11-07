@@ -2,9 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import {
-  DeviceData,
-  GpsInterface,
-  GpsLocationInterface,
+  DetailGpsInterface,
   IGps,
   ListGpsInterface,
 } from '../interfaces/gps.model';
@@ -16,11 +14,7 @@ export class GpsService {
   url: string = '/assets/gps_data.json';
   constructor(private http: HttpClient) {}
 
-  getGpsData(): Observable<IGps[]> {
-    return this.http.get<IGps[]>(this.url);
-  }
-
-  getGpsList(): Observable<ListGpsInterface[]> {
+  getGpsLists(): Observable<ListGpsInterface[]> {
     return this.http.get<IGps[]>(this.url).pipe(
       map((data) => {
         const groupedData: ListGpsInterface[] = data.reduce(
@@ -40,48 +34,68 @@ export class GpsService {
     );
   }
 
-  getGpsItems(): Observable<GpsInterface[]> {
+  getGpsDetail(deviceId: string): Observable<DetailGpsInterface[]> {
     return this.http.get<IGps[]>(this.url).pipe(
       map((data) => {
-        const groupedData: GpsInterface[] = data.reduce((acc: any, item) => {
-          if (!acc[item.device_id]) {
-            acc[item.device_id] = {
-              device_id: item.device_id,
-              device_type: item.device_type,
-              location: [],
-            };
-          }
-          if (!acc[item.device_id].location.includes(item.location)) {
-            acc[item.device_id].location.push(item.location);
-          }
-          return acc;
-        }, {});
-        return Object.values(groupedData);
-      })
-    );
-  }
-
-  getGpsDetail(deviceId: string): Observable<GpsLocationInterface[]> {
-    return this.http.get<IGps[]>(this.url).pipe(
-      map((data) => {
-        const groupedData: GpsLocationInterface[] = data.reduce(
-          (acc: any, item) => {
-            if (item.device_id == deviceId) {
-              if (!acc[item.location]) {
-                acc[item.location] = {
-                  location: item.location,
-                  timestamp: [],
-                };
+        const groupedData: Map<string, DetailGpsInterface> = data.reduce(
+          (acc, item) => {
+            if (item.device_id === deviceId) {
+              const key = `${item.device_id}-${item.device_type}`;
+              if (!acc.has(key)) {
+                acc.set(key, {
+                  device_id: item.device_id,
+                  device_type: item.device_type,
+                  device_location: [],
+                  totalTimeSpent: 0,
+                });
               }
-              if (!acc[item.location].timestamp.includes(item.timestamp)) {
-                acc[item.location].timestamp.push(item.timestamp);
+
+              const entry = acc.get(key);
+              const locationKey = item.location;
+
+              if (!entry) {
+                return acc;
+              }
+
+              if (
+                !entry.device_location.some(
+                  (loc) => loc.location === locationKey
+                )
+              ) {
+                entry.device_location.push({
+                  location: locationKey,
+                  timestamp: [],
+                  totalTimestamp: 0,
+                });
+              }
+
+              const location = entry.device_location.find(
+                (loc) => loc.location === locationKey
+              );
+
+              if (location) {
+                location.timestamp.push(item.timestamp);
               }
             }
             return acc;
           },
-          {}
+          new Map<string, DetailGpsInterface>()
         );
-        return Object.values(groupedData);
+
+        const result: DetailGpsInterface[] = Array.from(groupedData.values());
+        result.forEach((entry) => {
+          entry.device_location.forEach((location) => {
+            location.totalTimestamp = this.calculateTimeSpent(
+              location.timestamp
+            );
+          });
+          entry.totalTimeSpent = entry.device_location.reduce(
+            (total, loc) => total + loc.totalTimestamp,
+            0
+          );
+        });
+
+        return result;
       })
     );
   }
