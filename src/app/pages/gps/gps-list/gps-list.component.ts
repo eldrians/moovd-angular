@@ -17,6 +17,8 @@ export class GpsListComponent implements OnInit {
   gpsLists: ListGpsInterface[] = [];
   filteredGpsLists: ListGpsInterface[] = []; //changeable
 
+  clickNumber: number = 0;
+
   get filterText() {
     return this._filtertext;
   }
@@ -37,6 +39,25 @@ export class GpsListComponent implements OnInit {
       this.gpsLists = res.reverse();
       this.filteredGpsLists = res.reverse();
     });
+  }
+
+  sortClick() {
+    this.clickNumber += 1;
+    if (this.clickNumber === 3) {
+      this.clickNumber = 0;
+    }
+
+    if (this.clickNumber == 0) {
+      this.filteredGpsLists.sort((a, b) =>
+        a.device_type.localeCompare(b.device_type)
+      );
+    } else if (this.clickNumber == 1) {
+      this.filteredGpsLists.sort((a, b) =>
+        b.device_type.localeCompare(a.device_type)
+      );
+    } else {
+      this.filteredGpsLists = this.filteredGpsLists.reverse();
+    }
   }
 
   filterGps(filterTerm: string) {
