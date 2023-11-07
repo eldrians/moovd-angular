@@ -12,7 +12,7 @@ import { GpsService } from 'src/app/core/services';
 })
 export class GpsDetailComponent implements OnInit {
   gpsIdData: string = '';
-  gpsDetail: DetailGpsInterface[] = [];
+  gpsDetail: DetailGpsInterface | undefined;
 
   total: number = 0;
 
@@ -30,8 +30,8 @@ export class GpsDetailComponent implements OnInit {
     this.gpsServices
       .getGpsDetail(deviceId)
       .subscribe((res: DetailGpsInterface[]) => {
-        console.log(res);
-        this.gpsDetail = res;
+        console.log(res[0]);
+        this.gpsDetail = res[0];
       });
   }
 }
