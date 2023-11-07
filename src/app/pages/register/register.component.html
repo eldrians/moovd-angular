@@ -1,1 +1,149 @@
-<p>register works!</p>
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <img
+      class="mx-auto h-10 w-auto"
+      src="assets/logo/moovd_logo.svg"
+      alt="Your Company"
+    />
+    <h2
+      class="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+    >
+      Register
+    </h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form
+      class="space-y-6"
+      [formGroup]="registerForm"
+      (ngSubmit)="submitDetails()"
+    >
+      <div>
+        <label
+          for="fullName"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Full Name</label
+        >
+        <div class="mt-2">
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            formControlName="fullName"
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+          <small
+            *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+            class="block p-error"
+          >
+            <div *ngIf="fullName.errors?.['required']">Name is required.</div>
+            <div *ngIf="fullName.errors?.['pattern']">Enter a valid Name</div>
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="email"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Email</label
+        >
+        <div class="mt-2">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            formControlName="email"
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+          <small
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="block p-error"
+          >
+            <div *ngIf="email.errors?.['required']">Email is required.</div>
+            <div *ngIf="email.errors?.['email']">Email should be valid</div>
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="password"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Password</label
+        >
+        <div class="mt-2">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            formControlName="password"
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+          <small
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="block p-error"
+          >
+            <div *ngIf="password.errors?.['required']">
+              Password is required.
+            </div>
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between">
+          <label
+            for="confirmPassword"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Confirm Password</label
+          >
+        </div>
+        <div class="mt-2">
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            formControlName="confirmPassword"
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+          <small
+            *ngIf="
+              confirmPassword.invalid &&
+              (confirmPassword.dirty || confirmPassword.touched)
+            "
+            class="block p-error"
+          >
+            <div *ngIf="confirmPassword.errors?.['required']">
+              Confirm the password
+            </div>
+          </small>
+          <small
+            class="block p-error"
+            *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid"
+          >
+            Password should match
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          [disabled]="registerForm.invalid"
+          class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Sign in
+        </button>
+      </div>
+    </form>
+    <p class="mt-10 text-center text-sm text-gray-500">
+      Already a member?
+      <a
+        routerLink="/login"
+        class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+        >Login</a
+      >
+    </p>
+  </div>
+</div>
