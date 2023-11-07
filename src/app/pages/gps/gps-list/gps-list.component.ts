@@ -19,7 +19,7 @@ export class GpsListComponent implements OnInit {
     this.getGpsItem();
   }
   getGpsItem() {
-    this.gpsServices.getGpsItems().subscribe((res: GpsInterface[]) => {
+    this.gpsServices.getGpsList().subscribe((res: GpsInterface[]) => {
       console.log(res);
       this.gpsItems = res;
     });
