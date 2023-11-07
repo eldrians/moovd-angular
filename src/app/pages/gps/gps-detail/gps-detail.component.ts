@@ -3,18 +3,22 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetailGpsInterface } from 'src/app/core/interfaces/gps.model';
 import { GpsService } from 'src/app/core/services';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import {
+  ChartInterface,
+  DataPointInterface,
+} from 'src/app/core/interfaces/canvas.model';
 
 @Component({
   selector: 'app-gps-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CanvasJSAngularChartsModule],
   templateUrl: './gps-detail.component.html',
 })
 export class GpsDetailComponent implements OnInit {
   gpsIdData: string = '';
   gpsDetail: DetailGpsInterface | undefined;
-
-  total: number = 0;
+  chartOptions: ChartInterface | undefined;
 
   constructor(
     private gpsServices: GpsService,
@@ -32,6 +36,35 @@ export class GpsDetailComponent implements OnInit {
       .subscribe((res: DetailGpsInterface[]) => {
         console.log(res[0]);
         this.gpsDetail = res[0];
+        this.chartHandle(res[0]);
       });
+  }
+
+  chartHandle(data: DetailGpsInterface): void {
+    const totalTimeSpent = data.totalTimeSpent;
+    const dataPoints: DataPointInterface[] = data.device_location.map(
+      (location) => ({
+        name: location.location,
+        totalTimestamp: location.totalTimestamp,
+        length: location.timestamp.length,
+        y: (location.totalTimestamp * 100) / totalTimeSpent,
+      })
+    );
+    this.chartOptions = {
+      animationEnabled: true,
+      title: {
+        text: data.device_id,
+      },
+      data: [
+        {
+          type: 'pie',
+          startAngle: -90,
+          indexLabel:
+            '{name} is {totalTimestamp}min as it has {length} entries - {y}',
+          yValueFormatString: "#,###.##'%'",
+          dataPoints: dataPoints,
+        },
+      ],
+    };
   }
 }
