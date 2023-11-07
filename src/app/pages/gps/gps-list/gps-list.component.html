@@ -64,7 +64,7 @@
       <table class="w-full whitespace-nowrap">
         <tbody>
           <tr
-            *ngFor="let gps of gpsData"
+            *ngFor="let item of gpsItems"
             tabindex="0"
             class="focus:outline-none h-16 border border-gray-100 rounded"
           >
@@ -73,21 +73,21 @@
                 <p
                   class="text-base font-medium leading-none text-gray-700 mr-2"
                 >
-                  {{ gps.device_id }}
+                  {{ item.device_id }}
                 </p>
               </div>
             </td>
             <td class="pl-0">
               <div class="flex items-center">
                 <p class="text-sm leading-none text-gray-600 ml-2">
-                  {{ gps.device_type }}
+                  {{ item.device_type }}
                 </p>
               </div>
             </td>
             <td class="pl-0">
               <button
                 class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none"
-                [routerLink]="['/gps', gps?.device_id]"
+                [routerLink]="['/gps', item.device_id]"
               >
                 View
               </button>
