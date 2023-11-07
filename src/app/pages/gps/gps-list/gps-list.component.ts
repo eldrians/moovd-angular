@@ -20,7 +20,7 @@ export class GpsListComponent implements OnInit {
   }
   getGpsLists() {
     this.gpsServices.getGpsLists().subscribe((res: ListGpsInterface[]) => {
-      this.gpsLists = res;
+      this.gpsLists = res.reverse();
     });
   }
 }
