@@ -13,6 +13,7 @@ import { GpsListComponent } from './app/pages/gps/gps-list/gps-list.component';
 import { GpsDetailComponent } from './app/pages/gps/gps-detail/gps-detail.component';
 import { LoginComponent } from './app/pages/login/login.component';
 import { RegisterComponent } from './app/pages/register/register.component';
+import { authGuard } from './app/core/guard/auth.guard';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -30,10 +31,12 @@ bootstrapApplication(AppComponent, {
       {
         path: 'gps',
         component: GpsListComponent,
+        canActivate: [authGuard],
       },
       {
         path: 'gps/:id',
         component: GpsDetailComponent,
+        canActivate: [authGuard],
       },
       // {
       //   path: 'gps',
