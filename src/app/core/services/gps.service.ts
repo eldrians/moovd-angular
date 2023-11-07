@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { IGps } from '../interfaces/gps.model';
 
 @Injectable({
@@ -12,5 +12,11 @@ export class GpsService {
 
   getGpsData(): Observable<IGps[]> {
     return this.http.get<IGps[]>(this.url);
+  }
+
+  getGpsDetail(gpsId: string): Observable<IGps[]> {
+    return this.http
+      .get<IGps[]>(this.url)
+      .pipe(map((data) => data.filter((item) => item.device_id === gpsId)));
   }
 }
