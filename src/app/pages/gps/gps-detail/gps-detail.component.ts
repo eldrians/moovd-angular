@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IGps } from 'src/app/core/interfaces/gps.model';
+import { GpsLocationInterface, IGps } from 'src/app/core/interfaces/gps.model';
 import { GpsService } from 'src/app/core/services';
 
 @Component({
@@ -13,19 +13,21 @@ import { GpsService } from 'src/app/core/services';
 export class GpsDetailComponent implements OnInit {
   gpsIdData: string = '';
 
-  constructor(private gpsServices: GpsService, private router: ActivatedRoute) {
-    // let getDeviceId: string | null = this.router.snapshot.paramMap.get('id');
-    // this.gpsIdData = getDeviceId;
-  }
+  constructor(
+    private gpsServices: GpsService,
+    private router: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.gpsIdData = this.router.snapshot.params['id'];
     this.getGpsDetail(this.gpsIdData);
   }
 
-  getGpsDetail(gpsId: string) {
-    this.gpsServices.getGpsDetail(gpsId).subscribe((res: IGps[]) => {
-      console.log(res);
-    });
+  getGpsDetail(deviceId: string) {
+    this.gpsServices
+      .getGpsDetail(deviceId)
+      .subscribe((res: GpsLocationInterface[]) => {
+        console.log(res);
+      });
   }
 }

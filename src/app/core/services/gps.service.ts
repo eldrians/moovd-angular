@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { GpsInterface, IGps } from '../interfaces/gps.model';
+import {
+  GpsInterface,
+  GpsLocationInterface,
+  IGps,
+} from '../interfaces/gps.model';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +39,32 @@ export class GpsService {
     );
   }
 
-  getGpsDetail(gpsId: string): Observable<IGps[]> {
+  getGpsDetail(deviceId: string): Observable<GpsLocationInterface[]> {
+    return this.http.get<IGps[]>(this.url).pipe(
+      map((data) => {
+        const groupedData: GpsLocationInterface[] = data.reduce(
+          (acc: any, item) => {
+            if (item.device_id == deviceId) {
+              if (!acc[item.location]) {
+                acc[item.location] = {
+                  location: item.location,
+                  timestamp: [],
+                };
+              }
+              if (!acc[item.location].timestamp.includes(item.timestamp)) {
+                acc[item.location].timestamp.push(item.timestamp);
+              }
+            }
+            return acc;
+          },
+          {}
+        );
+        return Object.values(groupedData);
+      })
+    );
+  }
+
+  getGpsDetailx(gpsId: string): Observable<IGps[]> {
     return this.http
       .get<IGps[]>(this.url)
       .pipe(map((data) => data.filter((item) => item.device_id === gpsId)));
