@@ -1,84 +1,82 @@
-<div class="sm:px-6 w-full">
-  <div class="px-4 md:px-10 py-4 md:py-7">
-    <div class="flex items-center justify-between">
-      <p
-        tabindex="0"
-        class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-darkMoovd"
-      >
-        GPS List
-      </p>
-    </div>
+<div class="sm:px-6 w-full h-full bg-lightMoovd">
+  <div class="px-4 md:px-10 pt-4 pb-7">
+    <h1
+      class="text-base sm:text-lg md:text-xl lg:text-3xl font-bold text-darkMoovd"
+    >
+      GPS List
+    </h1>
   </div>
-  <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
-    <div class="sm:flex items-center justify-between">
+  <div class="bg-white rounded shadow-xl p-8">
+    <div class="flex flex-row items-center justify-between px-2 pb-7">
       <div class="flex items-center">
-        <a
-          class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800"
-          href=" javascript:void(0)"
-        >
-          <div class="py-2 px-8 bg-primaryMoovd text-darkMoovd rounded-full">
-            <p>All</p>
-          </div>
-        </a>
-        <a
-          class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8"
-          href="javascript:void(0)"
-        >
+        <a>
           <div
-            class="py-2 px-8 text-gray-600 hover:text-darkMoovd hover:bg-primaryMoovd rounded-full"
+            class="py-2 px-4 text-sm font-semibold text-white bg-grayMoovd/90 hover:bg-darkMoovd rounded"
           >
-            <p>Done</p>
-          </div>
-        </a>
-        <a
-          class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8"
-          href="javascript:void(0)"
-        >
-          <div
-            class="py-2 px-8 text-gray-600 hover:text-darkMoovd hover:bg-primaryMoovd rounded-full"
-          >
-            <p>Pending</p>
+            Search
           </div>
         </a>
       </div>
-      <div>
-        <a
-          class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8"
-          href="javascript:void(0)"
-        >
+      <div class="flex flex-row space-x-2">
+        <div>
+          <input
+            type="text"
+            class="py-2 px-4 text-sm border rounded"
+            placeholder="search..."
+            [(ngModel)]="filterText"
+          />
+        </div>
+        <a>
           <div
-            class="py-2 px-8 text-gray-600 hover:text-darkMoovd hover:bg-primaryMoovd rounded-full"
+            class="cursor-pointer py-2 px-4 text-sm font-semibold text-white bg-secondaryMoovd hover:bg-pink-900 rounded"
           >
-            <p>Pending</p>
+            S
           </div>
         </a>
       </div>
     </div>
-    <div class="mt-7 overflow-x-auto">
-      <table class="w-full whitespace-nowrap">
+    <div class="overflow-x-auto">
+      <table class="w-full whitespace-nowrap text-darkMoovd">
         <tbody>
           <tr
-            *ngFor="let item of gpsLists"
-            tabindex="0"
-            class="focus:outline-none h-16 border border-gray-100 rounded"
+            class="focus:outline-none h-16 border border-graykMoovd font-bold text-base"
           >
-            <td class="">
+            <th>
               <div class="flex items-center pl-5">
-                <p
-                  class="text-base font-medium leading-none text-gray-700 mr-2"
-                >
+                <p class="mr-2">Device ID</p>
+              </div>
+            </th>
+            <th>
+              <div class="flex items-center">
+                <p class="mr-2">Device Type</p>
+              </div>
+            </th>
+            <th>
+              <div class="flex items-center">
+                <p class="mr-2">Action</p>
+              </div>
+            </th>
+          </tr>
+          <tr
+            *ngFor="let item of filteredGpsLists"
+            tabindex="0"
+            class="focus:outline-none h-16 border border-graykMoovd"
+          >
+            <td>
+              <div class="flex items-center pl-5">
+                <p class="text-base font-medium mr-2">
                   {{ item.device_id }}
                 </p>
               </div>
             </td>
-            <td class="pl-0">
+            <td>
               <div class="flex items-center">
-                <p class="text-sm leading-none text-gray-600 ml-2">
+                <p class="text-sm ml-2">
                   {{ item.device_type }}
                 </p>
               </div>
             </td>
-            <td class="pl-0">
+            <td>
               <button
                 class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none"
                 [routerLink]="['/gps', item.device_id]"
@@ -87,27 +85,8 @@
               </button>
             </td>
           </tr>
-          <tr class="h-3"></tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-
-<script>
-  function dropdownFunction(element) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    let list =
-      element.parentElement.parentElement.getElementsByClassName(
-        "dropdown-content"
-      )[0];
-    list.classList.add("target");
-    for (i = 0; i < dropdowns.length; i++) {
-      if (!dropdowns[i].classList.contains("target")) {
-        dropdowns[i].classList.add("hidden");
-      }
-    }
-    list.classList.toggle("hidden");
-  }
-</script>

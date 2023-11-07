@@ -34,6 +34,10 @@ export class GpsService {
     );
   }
 
+  getGpsData(): Observable<IGps[]> {
+    return this.http.get<IGps[]>(this.url);
+  }
+
   getGpsDetail(deviceId: string): Observable<DetailGpsInterface[]> {
     return this.http.get<IGps[]>(this.url).pipe(
       map((data) => {
