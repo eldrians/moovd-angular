@@ -1,11 +1,18 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  Validators,
+  ReactiveFormsModule,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
 import { ButtonComponent } from 'src/app/shared/components';
+import { InputComponent } from 'src/app/shared/components/input/input.component';
 
 @Component({
   selector: 'app-login',
@@ -17,22 +24,21 @@ import { ButtonComponent } from 'src/app/shared/components';
     RouterModule,
     SweetAlert2Module,
     ButtonComponent,
+    InputComponent,
   ],
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required),
   });
 
   checkAccount: boolean = true;
 
-  constructor(
-    private fb: FormBuilder,
-    private authServices: AuthService,
-    private router: Router
-  ) {}
+  constructor(private authServices: AuthService, private router: Router) {
+    this.loginForm.valueChanges.subscribe((v) => console.log(v));
+  }
 
   get email() {
     return this.loginForm.controls['email'];
