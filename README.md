@@ -18,6 +18,7 @@ Here are the tasks that I have completed.
 #### Register and Login (Sucess)
 
 show alert success
+
 ![login-register-success-case](https://github.com/eldrians/moovd-angular/assets/91566708/3d0fdf33-da23-4a9f-81c1-497f97ddaa96)
 
 #### Register and Login (Validation)
@@ -60,11 +61,13 @@ The user can't access /gps because there is a guard in the route.
 
 App can run in offline mode
 
+
 ![pwa](https://github.com/eldrians/moovd-angular/assets/91566708/a49599c4-c8a0-48cb-b75e-df5ba533b23c)
 
 #### Test Coverage
 
 The test coverage is not 100%, but at least it has been done using Jest with the different folder structure outside the app.
+
 
 ![image](https://github.com/eldrians/moovd-angular/assets/91566708/309752a5-de55-464c-8749-4fbbf1a96c22)
 
