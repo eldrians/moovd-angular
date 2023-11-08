@@ -44,5 +44,8 @@
     class="bg-white border-b border-primaryMoovd flex flex-col justify-start items-center gap-3 py-4 text-sm"
   >
     <li [routerLink]="['/gps']" class="cursor-pointer">GPS</li>
+    <li (click)="logOut()" class="cursor-pointer text-secondaryMoovd">
+      Logout
+    </li>
   </ul>
 </div>

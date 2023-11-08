@@ -3,11 +3,19 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, ReactiveFormsModule, RouterModule],
+  imports: [
+    CommonModule,
+    NgOptimizedImage,
+    ReactiveFormsModule,
+    RouterModule,
+    SweetAlert2Module,
+  ],
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
@@ -15,6 +23,8 @@ export class LoginComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
+
+  checkAccount: boolean = true;
 
   constructor(
     private fb: FormBuilder,
@@ -36,23 +46,19 @@ export class LoginComponent {
       (response) => {
         if (response.length > 0 && response[0].password === password) {
           sessionStorage.setItem('email', email as string);
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Sucess',
+            showConfirmButton: false,
+            timer: 1500,
+          });
           this.router.navigate(['/gps']);
+        } else {
+          this.checkAccount = false;
         }
-        // else {
-        //   this.msgService.add({
-        //     severity: 'error',
-        //     summary: 'Error',
-        //     detail: 'email or password is wrong',
-        //   });
-        // }
       },
       (error) => {
         console.log(error);
-        // this.msgService.add({
-        //   severity: 'error',
-        //   summary: 'Error',
-        //   detail: 'Something went wrong',
-        // });
       }
     );
   }

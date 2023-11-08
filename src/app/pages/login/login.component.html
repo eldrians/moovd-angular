@@ -66,6 +66,12 @@
           </small>
         </div>
       </div>
+      <div
+        *ngIf="!checkAccount"
+        class="text-xs text-red-500 p-1 border border-red-500 rounded"
+      >
+        Your email or password are incorrect, Please Try again!
+      </div>
 
       <div>
         <button
