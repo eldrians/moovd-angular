@@ -1,27 +1,91 @@
-# MoovdAngular
+# Moovd - GPS List App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+Full Document in this Link 
 
-## Development server
+Here are the tasks that I have completed.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+| Task                              | 
+| :-------------------------------- |
+| `Login Page`                      |
+| `Register Page`                   |
+| `Show GPS List`                   |
+| `Show GPS Details`                |
 
-## Code scaffolding
+## Documentation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Demo
 
-## Build
+#### Register and Login (Sucess)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![login-register-success-case](https://github.com/eldrians/moovd-angular/assets/91566708/3d0fdf33-da23-4a9f-81c1-497f97ddaa96)
 
-## Running unit tests
+#### Register and Login (Validation)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![login-register-failed-case](https://github.com/eldrians/moovd-angular/assets/91566708/313254de-042a-4322-bf89-873e2efd7449)
 
-## Running end-to-end tests
+#### Search
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+#### Sort
 
-## Further help
+#### Detail
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### Pagination
+
+#### Responsive
+
+#### Logout
+
+## Setup & Run
+
+### Setup
+
+open your terminal and run this command :
+
+```
+  git clone https://github.com/eldrians/moovd-angular.git
+```
+
+open the application and run this command too:
+
+```
+  npm i
+```
+
+```
+  ng serve
+```
+
+### Run App
+
+run the application(terminal 1)
+
+```
+  npm run start
+```
+
+run the json-server(terminal 2)
+
+```
+  npm run start
+```
+
+### Run Test
+
+- test all file
+
+```
+  npm run test
+```
+
+- Test spesific file
+
+```
+  npx jest <file name>
+```
+
+- see coverage
+
+```
+  npx jest test:coverage
+```
+
