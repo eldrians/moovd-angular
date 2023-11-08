@@ -1,12 +1,6 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  Validators,
-  ReactiveFormsModule,
-  FormControl,
-  FormGroup,
-} from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { User } from 'src/app/core/interfaces/auth.model';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -31,24 +25,26 @@ import { InputComponent } from 'src/app/shared/components/input/input.component'
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
-  registerForm = new FormGroup(
+  registerForm = this.fb.group(
     {
-      fullName: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/),
-      ]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required),
+      fullName: [
+        '',
+        [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)],
+      ],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
     },
     {
       validators: passwordMatchValidator,
     }
   );
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.registerForm.valueChanges.subscribe((v) => console.log(v));
-  }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   get fullName() {
     return this.registerForm.controls['fullName'];
