@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DetailGpsInterface } from 'src/app/core/interfaces/gps.model';
 import { GpsService } from 'src/app/core/services';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
@@ -12,7 +12,7 @@ import {
 @Component({
   selector: 'app-gps-detail',
   standalone: true,
-  imports: [CommonModule, CanvasJSAngularChartsModule],
+  imports: [CommonModule, CanvasJSAngularChartsModule, RouterModule],
   templateUrl: './gps-detail.component.html',
 })
 export class GpsDetailComponent implements OnInit {
@@ -45,22 +45,19 @@ export class GpsDetailComponent implements OnInit {
     const dataPoints: DataPointInterface[] = data.device_location.map(
       (location) => ({
         name: location.location,
-        totalTimestamp: location.totalTimestamp,
-        length: location.timestamp.length,
         y: (location.totalTimestamp * 100) / totalTimeSpent,
       })
     );
     this.chartOptions = {
       animationEnabled: true,
       title: {
-        text: data.device_id,
+        text: '',
       },
       data: [
         {
           type: 'pie',
           startAngle: -90,
-          indexLabel:
-            '{name} is {totalTimestamp}min as it has {length} entries - {y}',
+          indexLabel: '{name}: {y}',
           yValueFormatString: "#,###.##'%'",
           dataPoints: dataPoints,
         },

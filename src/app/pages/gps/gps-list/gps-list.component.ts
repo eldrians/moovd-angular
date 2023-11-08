@@ -1,6 +1,6 @@
-import { CommonModule, NgClass, NgComponentOutlet } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ListGpsInterface } from 'src/app/core/interfaces/gps.model';
 import { GpsService } from 'src/app/core/services';
@@ -9,6 +9,7 @@ import {
   faSort,
   faSortUp,
   faSortDown,
+  faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -21,6 +22,7 @@ export class GpsListComponent implements OnInit {
   faSort = faSort;
   faSortUp = faSortUp;
   faSortDown = faSortDown;
+  faMagnifyingGlass = faMagnifyingGlass;
 
   _filtertext: string = '';
 
@@ -53,6 +55,7 @@ export class GpsListComponent implements OnInit {
   }
 
   sortClickDeviceType() {
+    this.clickNumberDeviceId = 0;
     this.clickNumberDeviceType += 1;
     if (this.clickNumberDeviceType === 3) {
       this.clickNumberDeviceType = 0;
@@ -72,6 +75,7 @@ export class GpsListComponent implements OnInit {
   }
 
   sortClickDeviceId() {
+    this.clickNumberDeviceType = 0;
     this.clickNumberDeviceId += 1;
     if (this.clickNumberDeviceId === 2) {
       this.clickNumberDeviceId = 0;

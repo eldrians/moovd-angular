@@ -16,7 +16,5 @@ export interface ChartInterface {
 
 export interface DataPointInterface {
   name: string;
-  totalTimestamp?: number;
-  length?: number;
   y: number;
 }
