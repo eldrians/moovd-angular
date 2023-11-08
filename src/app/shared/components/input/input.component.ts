@@ -10,10 +10,10 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
     <div>
       <label
         [for]="inputId"
-        class="block text-sm font-medium leading-6 text-darkMoovd"
+        class="block text-xs font-medium leading-6 text-darkMoovd"
         >{{ label }}</label
       >
-      <div class="mt-1">
+      <div class="mt-0.5">
         <input
           [class.invalid]="control.invalid && control.dirty && control.touched"
           [formControl]="control"

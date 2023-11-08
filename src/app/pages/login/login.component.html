@@ -10,10 +10,10 @@
     />
   </div>
   <div
-    class="mt-8 sm:mx-auto sm:w-full sm:max-w-sm shadow p-10 rounded-xl backdrop-blur-sm bg-white/50"
+    class="mt-8 sm:mx-auto sm:w-full sm:max-w-sm shadow p-8 md:p-10 rounded-xl backdrop-blur-sm bg-white/50"
   >
     <div class="text-left mb-4">
-      <h2 class="text-3xl font-bold text-grayMoovd">Sign In</h2>
+      <h2 class="text-2xl md:text3xl font-bold text-grayMoovd">Sign In</h2>
     </div>
     <form class="space-y-4" [formGroup]="loginForm" (ngSubmit)="loginUser()">
       <div class="flex flex-col space-y-2">
@@ -35,7 +35,7 @@
       </div>
       <div
         *ngIf="!checkAccount"
-        class="text-xs text-red-500 p-1 border border-red-500 rounded"
+        class="text-xs text-red-500 p-1 border border-red-500 rounded text-center"
       >
         Your email or password are incorrect, Please Try again!
       </div>
