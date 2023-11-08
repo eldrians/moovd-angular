@@ -31,10 +31,6 @@ export class GpsService {
     );
   }
 
-  getGpsData(): Observable<IGps[]> {
-    return this.http.get<IGps[]>(`${this.baseUrl}/data`);
-  }
-
   getGpsDetail(deviceId: string): Observable<DetailGpsInterface[]> {
     return this.http.get<IGps[]>(`${this.baseUrl}/data`).pipe(
       map((data) => {
@@ -102,14 +98,13 @@ export class GpsService {
   }
 
   calculateTimeSpent(timestamps: string[]): number {
-    const dateObjects = timestamps.map((timestamp) => {
+    const date = timestamps.map((timestamp) => {
       const parts = timestamp.split(' ');
       const dateParts = parts[0].split('-');
       const timeParts = parts[1].split('.');
 
-      // Parse the date and time components
       const year = parseInt(dateParts[2]);
-      const month = parseInt(dateParts[1]) - 1; // JavaScript months are 0-based
+      const month = parseInt(dateParts[1]) - 1;
       const day = parseInt(dateParts[0]);
       const hours = parseInt(timeParts[0]);
       const minutes = parseInt(timeParts[1]);
@@ -117,10 +112,10 @@ export class GpsService {
       return new Date(year, month, day, hours, minutes);
     });
 
-    let totalTimeSpent = 5;
-    for (let i = 1; i < dateObjects.length; i++) {
-      const timeDifference =
-        dateObjects[i].getTime() - dateObjects[i - 1].getTime();
+    let totalTimeSpent = 5; // start with 5
+
+    for (let i = 1; i < date.length; i++) {
+      const timeDifference = date[i].getTime() - date[i - 1].getTime();
       const timeSpentInMinutes = timeDifference / (1000 * 60);
       totalTimeSpent += timeSpentInMinutes;
     }
