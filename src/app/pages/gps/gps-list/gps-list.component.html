@@ -34,12 +34,36 @@
           >
             <th>
               <div class="flex items-center pl-5">
-                <p class="mr-2">Device ID</p>
+                <button (click)="sortClickDeviceId()">
+                  Device ID
+                  <fa-icon
+                    *ngIf="clickNumberDeviceId == 1"
+                    [icon]="faSortDown"
+                  ></fa-icon>
+                  <fa-icon
+                    *ngIf="clickNumberDeviceId == 0"
+                    [icon]="faSort"
+                  ></fa-icon>
+                </button>
               </div>
             </th>
             <th>
               <div class="flex items-center">
-                <button (click)="sortClick()">Device Type</button>
+                <button (click)="sortClickDeviceType()">
+                  Device Type
+                  <fa-icon
+                    *ngIf="clickNumberDeviceType == 1"
+                    [icon]="faSortDown"
+                  ></fa-icon>
+                  <fa-icon
+                    *ngIf="clickNumberDeviceType == 2"
+                    [icon]="faSortUp"
+                  ></fa-icon>
+                  <fa-icon
+                    *ngIf="clickNumberDeviceType == 0"
+                    [icon]="faSort"
+                  ></fa-icon>
+                </button>
               </div>
             </th>
             <th>

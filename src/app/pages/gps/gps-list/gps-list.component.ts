@@ -4,20 +4,31 @@ import { FormBuilder, FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ListGpsInterface } from 'src/app/core/interfaces/gps.model';
 import { GpsService } from 'src/app/core/services';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {
+  faSort,
+  faSortUp,
+  faSortDown,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-gps-list',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, FontAwesomeModule],
   templateUrl: './gps-list.component.html',
 })
 export class GpsListComponent implements OnInit {
+  faSort = faSort;
+  faSortUp = faSortUp;
+  faSortDown = faSortDown;
+
   _filtertext: string = '';
 
   gpsLists: ListGpsInterface[] = [];
   filteredGpsLists: ListGpsInterface[] = []; //changeable
 
-  clickNumber: number = 0;
+  clickNumberDeviceType: number = 0;
+  clickNumberDeviceId: number = 0;
 
   get filterText() {
     return this._filtertext;
@@ -36,27 +47,41 @@ export class GpsListComponent implements OnInit {
   }
   getGpsLists() {
     this.gpsServices.getGpsLists().subscribe((res: ListGpsInterface[]) => {
-      this.gpsLists = res.reverse();
+      this.gpsLists = res;
       this.filteredGpsLists = res.reverse();
     });
   }
 
-  sortClick() {
-    this.clickNumber += 1;
-    if (this.clickNumber === 3) {
-      this.clickNumber = 0;
+  sortClickDeviceType() {
+    this.clickNumberDeviceType += 1;
+    if (this.clickNumberDeviceType === 3) {
+      this.clickNumberDeviceType = 0;
     }
 
-    if (this.clickNumber == 0) {
-      this.filteredGpsLists.sort((a, b) =>
+    if (this.clickNumberDeviceType == 1) {
+      this.filteredGpsLists = [...this.gpsLists].sort((a, b) =>
         a.device_type.localeCompare(b.device_type)
       );
-    } else if (this.clickNumber == 1) {
-      this.filteredGpsLists.sort((a, b) =>
+    } else if (this.clickNumberDeviceType == 2) {
+      this.filteredGpsLists = [...this.gpsLists].sort((a, b) =>
         b.device_type.localeCompare(a.device_type)
       );
     } else {
-      this.filteredGpsLists = this.filteredGpsLists.reverse();
+      this.filteredGpsLists = this.gpsLists;
+    }
+  }
+
+  sortClickDeviceId() {
+    this.clickNumberDeviceId += 1;
+    if (this.clickNumberDeviceId === 2) {
+      this.clickNumberDeviceId = 0;
+    }
+    if (this.clickNumberDeviceId == 1) {
+      this.filteredGpsLists = [...this.gpsLists].sort((a, b) =>
+        a.device_id.localeCompare(b.device_id)
+      );
+    } else {
+      this.filteredGpsLists = this.gpsLists;
     }
   }
 
