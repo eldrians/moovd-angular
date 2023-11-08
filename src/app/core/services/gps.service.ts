@@ -12,10 +12,11 @@ import {
 })
 export class GpsService {
   url: string = '/assets/gps_data.json';
+  private baseUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) {}
 
   getGpsLists(): Observable<ListGpsInterface[]> {
-    return this.http.get<IGps[]>(this.url).pipe(
+    return this.http.get<IGps[]>(`${this.baseUrl}/data`).pipe(
       map((data) => {
         const groupedData: ListGpsInterface[] = data.reduce(
           (acc: any, item) => {
@@ -35,11 +36,11 @@ export class GpsService {
   }
 
   getGpsData(): Observable<IGps[]> {
-    return this.http.get<IGps[]>(this.url);
+    return this.http.get<IGps[]>(`${this.baseUrl}/data`);
   }
 
   getGpsDetail(deviceId: string): Observable<DetailGpsInterface[]> {
-    return this.http.get<IGps[]>(this.url).pipe(
+    return this.http.get<IGps[]>(`${this.baseUrl}/data`).pipe(
       map((data) => {
         const groupedData: Map<string, DetailGpsInterface> = data.reduce(
           (acc, item) => {
