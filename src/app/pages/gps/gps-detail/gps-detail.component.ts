@@ -1,14 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { DetailGpsInterface } from 'src/app/core/interfaces/gps.model';
-import { GpsService } from 'src/app/core/services';
-import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+
 import {
+  DetailGpsInterface,
   ChartInterface,
   DataPointInterface,
-} from 'src/app/core/interfaces/canvas.model';
+} from 'src/app/core/interfaces';
+import { GpsService } from 'src/app/core/services';
 import { ButtonComponent } from 'src/app/shared/components';
+
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 @Component({
   selector: 'app-gps-detail',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { FooterComponent, HeaderComponent } from './shared/components';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
+import { HeaderComponent, SidebarComponent } from './shared/components';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +18,6 @@ import { CommonModule } from '@angular/common';
         </div>
         <router-outlet class="z-10"></router-outlet>
       </div>
-      <div class="w-full block lg:hidden">
-        <app-footer></app-footer>
-      </div>
     </div>
     <div
       class="w-full flex justify-center items-center"
@@ -31,13 +28,7 @@ import { CommonModule } from '@angular/common';
       </div>
     </div>
   `,
-  imports: [
-    CommonModule,
-    SidebarComponent,
-    HeaderComponent,
-    FooterComponent,
-    RouterModule,
-  ],
+  imports: [CommonModule, SidebarComponent, HeaderComponent, RouterModule],
 })
 export class AppComponent {
   constructor(private router: Router) {}

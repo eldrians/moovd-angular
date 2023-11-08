@@ -2,14 +2,14 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { User } from 'src/app/core/interfaces/auth.model';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { passwordMatchValidator } from 'src/app/shared/directives/password-match.directive';
+
+import { User } from 'src/app/core/interfaces';
+import { AuthService } from 'src/app/core/services';
+import { passwordMatchValidator } from 'src/app/shared/directives';
+import { ButtonComponent, InputComponent } from 'src/app/shared/components';
+
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
-import { ButtonComponent } from 'src/app/shared/components';
-import { InputComponent } from 'src/app/shared/components/input/input.component';
-
 @Component({
   selector: 'app-register',
   standalone: true,

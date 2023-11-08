@@ -2,11 +2,12 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
+
+import { AuthService } from 'src/app/core/services';
+import { ButtonComponent, InputComponent } from 'src/app/shared/components';
+
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
-import { ButtonComponent } from 'src/app/shared/components';
-import { InputComponent } from 'src/app/shared/components/input/input.component';
 
 @Component({
   selector: 'app-login',

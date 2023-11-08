@@ -1,11 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import {
-  DetailGpsInterface,
-  IGps,
-  ListGpsInterface,
-} from '../interfaces/gps.model';
+
+import { DetailGpsInterface, IGps, ListGpsInterface } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',

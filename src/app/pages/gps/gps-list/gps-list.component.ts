@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ListGpsInterface } from 'src/app/core/interfaces/gps.model';
+
+import { ListGpsInterface } from 'src/app/core/interfaces';
 import { GpsService } from 'src/app/core/services';
-import { ButtonComponent } from 'src/app/shared/components';
-import { SortIconComponent } from 'src/app/shared/components/sort-icon/sort-icon.component';
+import { ButtonComponent, SortIconComponent } from 'src/app/shared/components';
 
 @Component({
   selector: 'app-gps-list',

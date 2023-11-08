@@ -38,11 +38,6 @@ bootstrapApplication(AppComponent, {
         component: GpsDetailComponent,
         canActivate: [authGuard],
       },
-      // {
-      //   path: 'gps',
-      //   loadChildren: () =>
-      //     import('./app/pages/gps/gps.routes').then((c) => c.GPS_ROUTES),
-      // },
       { path: '', redirectTo: 'gps', pathMatch: 'full' },
       { path: '**', redirectTo: 'gps', pathMatch: 'full' },
     ]),

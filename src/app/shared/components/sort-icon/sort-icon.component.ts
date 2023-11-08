@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
+
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import {
   faSort,
