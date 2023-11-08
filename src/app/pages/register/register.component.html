@@ -21,112 +21,47 @@
       [formGroup]="registerForm"
       (ngSubmit)="submitDetails()"
     >
-      <div>
-        <label for="fullName" class="block text-sm font-medium text-darkMoovd"
-          >Full Name</label
+      <div class="flex flex-col space-y-2">
+        <app-input
+          label="Full Name"
+          type="text"
+          inputId="fullName"
+          [control]="registerForm.controls.fullName"
+          placeholder="full name..."
         >
-        <div class="mt-1">
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            formControlName="fullName"
-            placeholder="your full name..."
-            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd/50 sm:text-sm"
-          />
-          <small
-            *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
-            class="text-xs text-red-500"
-          >
-            <div *ngIf="fullName.errors?.['required']">Name is required.</div>
-            <div *ngIf="fullName.errors?.['pattern']">Enter a valid Name</div>
-          </small>
-        </div>
-      </div>
-      <div>
-        <label for="email" class="block text-sm font-medium text-darkMoovd"
-          >Email</label
+        </app-input>
+        <app-input
+          label="Email"
+          type="email"
+          inputId="email"
+          [control]="registerForm.controls.email"
+          placeholder="email..."
         >
-        <div class="mt-1">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            formControlName="email"
-            placeholder="your email..."
-            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd/50 sm:text-sm"
-          />
-          <small
-            *ngIf="email.invalid && (email.dirty || email.touched)"
-            class="text-xs text-red-500"
-          >
-            <div *ngIf="email.errors?.['required']">Email is required.</div>
-            <div *ngIf="email.errors?.['email']">Email should be valid</div>
-          </small>
-        </div>
+        </app-input>
+        <app-input
+          label="Password"
+          type="password"
+          inputId="password"
+          [control]="registerForm.controls.password"
+          placeholder="password..."
+        ></app-input>
+        <app-input
+          label="Confirm Password"
+          type="password"
+          inputId="confirmPassword"
+          [control]="registerForm.controls.confirmPassword"
+          placeholder="confirm password..."
+        ></app-input>
       </div>
 
-      <div>
-        <label for="password" class="block text-sm font-medium text-darkMoovd"
-          >Password</label
-        >
-        <div class="mt-1">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            formControlName="password"
-            placeholder="your password..."
-            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd/50 sm:text-sm"
-          />
-          <small
-            *ngIf="password.invalid && (password.dirty || password.touched)"
-            class="text-xs text-red-500"
-          >
-            <div *ngIf="password.errors?.['required']">
-              Password is required.
-            </div>
-          </small>
-        </div>
+      <div
+        *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid"
+        class="text-xs text-red-500 p-1 border border-red-500 rounded"
+      >
+        Password should match !
       </div>
 
-      <div>
-        <label
-          for="confirmPassword"
-          class="block text-sm font-medium text-darkMoovd"
-          >Confirm Password</label
-        >
-        <div class="mt-1">
-          <input
-            type="confirmPassword"
-            id="confirmPassword"
-            name="confirmPassword"
-            formControlName="confirmPassword"
-            placeholder="confirm your password..."
-            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd/50 sm:text-sm"
-          />
-
-          <small
-            *ngIf="
-              confirmPassword.invalid &&
-              (confirmPassword.dirty || confirmPassword.touched)
-            "
-            class="text-xs text-red-500"
-          >
-            <div *ngIf="confirmPassword.errors?.['required']">
-              Confirm the password
-            </div>
-          </small>
-          <small
-            class="text-xs text-red-500"
-            *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid"
-          >
-            Password should match
-          </small>
-        </div>
-      </div>
-
-      <div class="w-full bg-slate-400">
+      <div class="w-full flex justify-center">
         <app-button text="Register" type="submit"></app-button>
       </div>
     </form>

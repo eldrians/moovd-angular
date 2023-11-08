@@ -42,5 +42,6 @@ export class InputComponent {
   errorMessages: Record<string, string> = {
     required: "The field is required",
     email: "The email is invalid",
+    pattern: "Enter a valid value",
   };
 }
