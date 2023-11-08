@@ -5,9 +5,11 @@ import { RouterLink } from '@angular/router';
 
 import { ListGpsInterface } from 'src/app/core/interfaces';
 import { GpsService } from 'src/app/core/services';
-import { ButtonComponent, SortIconComponent } from 'src/app/shared/components';
+import { SortIconComponent } from 'src/app/shared/components';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { faMagnifyingGlass, faEye } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-gps-list',
   standalone: true,
@@ -15,13 +17,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     RouterLink,
     FormsModule,
-    ButtonComponent,
     SortIconComponent,
     NgxPaginationModule,
+    FontAwesomeModule,
   ],
   templateUrl: './gps-list.component.html',
 })
 export class GpsListComponent implements OnInit {
+  faMagnifyingGlass = faMagnifyingGlass;
+  faEye = faEye;
   p: number = 1;
   _filtertext: string = '';
 
