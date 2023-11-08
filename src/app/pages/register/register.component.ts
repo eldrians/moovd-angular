@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -9,7 +9,7 @@ import { passwordMatchValidator } from 'src/app/shared/directives/password-match
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, NgOptimizedImage, ReactiveFormsModule, RouterModule],
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {

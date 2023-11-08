@@ -1,64 +1,64 @@
-<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+<div
+  class="w-full flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-gradient-to-br from-lightMoovd to-primaryMoovd"
+>
+  <div class="w-full flex justify-center items-center">
     <img
-      class="mx-auto h-10 w-auto"
-      src="assets/logo/moovd_logo.svg"
-      alt="Your Company"
+      ngSrc="assets/logo/moovd_logo.svg"
+      width="150"
+      height="100"
+      alt="MoovdLogo"
     />
-    <h2
-      class="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
-    >
-      Register
-    </h2>
   </div>
 
-  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+  <div
+    class="mt-8 sm:mx-auto sm:w-full sm:max-w-sm shadow p-10 rounded-xl backdrop-blur-sm bg-white/50"
+  >
+    <div class="text-left mb-4">
+      <h2 class="text-3xl font-bold text-grayMoovd">Register</h2>
+    </div>
     <form
-      class="space-y-6"
+      class="space-y-4"
       [formGroup]="registerForm"
       (ngSubmit)="submitDetails()"
     >
       <div>
-        <label
-          for="fullName"
-          class="block text-sm font-medium leading-6 text-gray-900"
+        <label for="fullName" class="block text-sm font-medium text-darkMoovd"
           >Full Name</label
         >
-        <div class="mt-2">
+        <div class="mt-1">
           <input
             type="text"
             id="fullName"
             name="fullName"
             formControlName="fullName"
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="your full name..."
+            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd/50 sm:text-sm"
           />
           <small
             *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
-            class="block p-error"
+            class="text-xs text-red-500"
           >
             <div *ngIf="fullName.errors?.['required']">Name is required.</div>
             <div *ngIf="fullName.errors?.['pattern']">Enter a valid Name</div>
           </small>
         </div>
       </div>
-
       <div>
-        <label
-          for="email"
-          class="block text-sm font-medium leading-6 text-gray-900"
+        <label for="email" class="block text-sm font-medium text-darkMoovd"
           >Email</label
         >
-        <div class="mt-2">
+        <div class="mt-1">
           <input
             type="email"
             id="email"
             name="email"
             formControlName="email"
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="your email..."
+            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd/50 sm:text-sm"
           />
           <small
             *ngIf="email.invalid && (email.dirty || email.touched)"
-            class="block p-error"
+            class="text-xs text-red-500"
           >
             <div *ngIf="email.errors?.['required']">Email is required.</div>
             <div *ngIf="email.errors?.['email']">Email should be valid</div>
@@ -67,22 +67,21 @@
       </div>
 
       <div>
-        <label
-          for="password"
-          class="block text-sm font-medium leading-6 text-gray-900"
+        <label for="password" class="block text-sm font-medium text-darkMoovd"
           >Password</label
         >
-        <div class="mt-2">
+        <div class="mt-1">
           <input
             type="password"
             id="password"
             name="password"
             formControlName="password"
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="your password..."
+            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd/50 sm:text-sm"
           />
           <small
             *ngIf="password.invalid && (password.dirty || password.touched)"
-            class="block p-error"
+            class="text-xs text-red-500"
           >
             <div *ngIf="password.errors?.['required']">
               Password is required.
@@ -92,34 +91,33 @@
       </div>
 
       <div>
-        <div class="flex items-center justify-between">
-          <label
-            for="confirmPassword"
-            class="block text-sm font-medium leading-6 text-gray-900"
-            >Confirm Password</label
-          >
-        </div>
-        <div class="mt-2">
+        <label
+          for="confirmPassword"
+          class="block text-sm font-medium text-darkMoovd"
+          >Confirm Password</label
+        >
+        <div class="mt-1">
           <input
-            type="password"
+            type="confirmPassword"
             id="confirmPassword"
             name="confirmPassword"
             formControlName="confirmPassword"
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="confirm your password..."
+            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd/50 sm:text-sm"
           />
           <small
             *ngIf="
               confirmPassword.invalid &&
               (confirmPassword.dirty || confirmPassword.touched)
             "
-            class="block p-error"
+            class="text-xs text-red-500"
           >
             <div *ngIf="confirmPassword.errors?.['required']">
               Confirm the password
             </div>
           </small>
           <small
-            class="block p-error"
+            class="text-xs text-red-500"
             *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid"
           >
             Password should match
@@ -131,17 +129,17 @@
         <button
           type="submit"
           [disabled]="registerForm.invalid"
-          class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          class="flex w-full justify-center rounded bg-grayMoovd hover:bg-darkMoovd px-3 py-1.5 text-sm font-semibold text-white shadow"
         >
-          Sign in
+          Register
         </button>
       </div>
     </form>
-    <p class="mt-10 text-center text-sm text-gray-500">
-      Already a member?
+    <p class="mt-10 text-center text-sm text-grayMoovd/70">
+      Already have an account?
       <a
         routerLink="/login"
-        class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+        class="font-base text-secondaryMoovd hover:font-semibold"
         >Login</a
       >
     </p>

@@ -22,13 +22,14 @@
           class="block text-sm font-medium leading-6 text-darkMoovd"
           >Email</label
         >
-        <div class="mt-2">
+        <div class="mt-1">
           <input
             type="email"
             id="email"
             name="email"
             formControlName="email"
-            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd sm:text-sm"
+            placeholder="email: user@mail.com"
+            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd/50 sm:text-sm"
           />
           <small
             *ngIf="email.invalid && (email.dirty || email.touched)"
@@ -46,13 +47,14 @@
             >Password</label
           >
         </div>
-        <div class="mt-2">
+        <div class="mt-1">
           <input
             type="password"
             id="password"
             name="password"
             formControlName="password"
-            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd sm:text-sm"
+            placeholder="pass: 123"
+            class="block w-full rounded border-0 py-1.5 px-2 text-darkMoovd ring-1 ring-grayMoovd/30 focus:outline-none placeholder:text-grayMoovd/50 sm:text-sm"
           />
           <small
             *ngIf="password.invalid && (password.dirty || password.touched)"

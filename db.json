@@ -1,10 +1,16 @@
 {
   "users": [
     {
-      "fullName": "aa",
-      "email": "aa@gmail.com",
-      "password": "aa",
+      "fullName": "user",
+      "email": "user@mail.com",
+      "password": "password",
       "id": 1
+    },
+    {
+      "fullName": "Axel Eldrian Hadiwibowo",
+      "email": "axel@gmail.com",
+      "password": "123",
+      "id": 2
     }
   ],
   "data": [
