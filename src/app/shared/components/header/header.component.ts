@@ -1,15 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { Router, RouterModule } from "@angular/router";
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'app-header',
+  selector: "app-header",
   standalone: true,
   imports: [CommonModule, RouterModule, FontAwesomeModule],
-  templateUrl: './header.component.html',
+  templateUrl: "./header.component.html",
 })
 export class HeaderComponent implements OnInit {
   faBars = faBars;
@@ -17,11 +17,18 @@ export class HeaderComponent implements OnInit {
 
   isOpen: boolean = false;
 
+  constructor(private router: Router) {}
+
   ngOnInit() {
     this.menuClick(this.isOpen);
   }
 
   menuClick(b: boolean) {
     this.isOpen = b;
+  }
+
+  logOut() {
+    sessionStorage.clear();
+    this.router.navigate(["login"]);
   }
 }
