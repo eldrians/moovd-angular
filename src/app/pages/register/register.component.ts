@@ -5,11 +5,19 @@ import { Router, RouterModule } from '@angular/router';
 import { User } from 'src/app/core/interfaces/auth.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { passwordMatchValidator } from 'src/app/shared/directives/password-match.directive';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, ReactiveFormsModule, RouterModule],
+  imports: [
+    CommonModule,
+    NgOptimizedImage,
+    ReactiveFormsModule,
+    RouterModule,
+    SweetAlert2Module,
+  ],
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
@@ -56,21 +64,16 @@ export class RegisterComponent {
     console.log(postData);
     this.authService.registerUser(postData as User).subscribe(
       (response) => {
-        console.log(response);
-        // this.messageService.add({
-        //   severity: 'success',
-        //   summary: 'Success',
-        //   detail: 'Register successfully',
-        // });
+        Swal.fire({
+          icon: 'success',
+          title: 'Account Registered',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         this.router.navigate(['login']);
       },
       (error) => {
         console.log(error);
-        // this.messageService.add({
-        //   severity: 'error',
-        //   summary: 'Error',
-        //   detail: 'Something went wrong',
-        // });
       }
     );
   }

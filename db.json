@@ -11,6 +11,12 @@
       "email": "axel@gmail.com",
       "password": "123",
       "id": 2
+    },
+    {
+      "fullName": "Axel Eldrian Hadiwibowo",
+      "email": "eldrian@gmail.com",
+      "password": "123",
+      "id": 3
     }
   ],
   "data": [
