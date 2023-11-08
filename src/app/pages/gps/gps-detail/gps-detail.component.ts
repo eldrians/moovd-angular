@@ -8,11 +8,17 @@ import {
   ChartInterface,
   DataPointInterface,
 } from 'src/app/core/interfaces/canvas.model';
+import { ButtonComponent } from 'src/app/shared/components';
 
 @Component({
   selector: 'app-gps-detail',
   standalone: true,
-  imports: [CommonModule, CanvasJSAngularChartsModule, RouterModule],
+  imports: [
+    CommonModule,
+    CanvasJSAngularChartsModule,
+    RouterModule,
+    ButtonComponent,
+  ],
   templateUrl: './gps-detail.component.html',
 })
 export class GpsDetailComponent implements OnInit {

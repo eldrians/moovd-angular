@@ -66,12 +66,9 @@
               </div>
             </td>
             <td>
-              <app-button
-                text="View"
-                [forLink]="true"
-                deviceId="{{ item.device_id }}"
-              >
-              </app-button>
+              <a [routerLink]="item.device_id">
+                <app-button text="View"></app-button>
+              </a>
             </td>
           </tr>
         </tbody>

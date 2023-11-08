@@ -6,11 +6,18 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 import Swal from "sweetalert2";
+import { ButtonComponent } from "../button/button.component";
 
 @Component({
   selector: "app-header",
   standalone: true,
-  imports: [CommonModule, RouterModule, FontAwesomeModule, SweetAlert2Module],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FontAwesomeModule,
+    SweetAlert2Module,
+    ButtonComponent,
+  ],
   templateUrl: "./header.component.html",
 })
 export class HeaderComponent implements OnInit {

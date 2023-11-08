@@ -2,12 +2,9 @@
   <div
     class="hidden w-full flex-row justify-between items-center py-2 px-4 lg:flex lg:justify-end lg:mr-2"
   >
-    <button
-      class="text-2xl lg:text-sm text-secondaryMoovd font-bold py-1.5 px-4 bg-white rounded shadow"
-      (click)="logOut()"
-    >
-      Logout
-    </button>
+    <a (click)="logOut()">
+      <app-button text="logout"></app-button>
+    </a>
   </div>
   <div class="w-full flex lg:hidden justify-between items-center">
     <div class="pl-6 md:pl-10 lg:pl-12">
