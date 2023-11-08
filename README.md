@@ -1,5 +1,7 @@
 # Moovd - GPS List App
 
+Full Document in this Link 
+
 Here are the tasks that I have completed.
 
 | Task                              | 
@@ -16,7 +18,7 @@ Here are the tasks that I have completed.
 open your terminal and run this command :
 
 ```
-  git clone https://github.com/eldrians/simplidots.git
+  git clone https://github.com/eldrians/moovd-angular.git
 ```
 
 open the application and run this command too:
