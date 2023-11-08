@@ -11,6 +11,30 @@ Here are the tasks that I have completed.
 | `Show GPS List`                   |
 | `Show GPS Details`                |
 
+## Documentation
+
+### Demo
+
+#### Register and Login (Sucess)
+
+![login-register-success-case](https://github.com/eldrians/moovd-angular/assets/91566708/3d0fdf33-da23-4a9f-81c1-497f97ddaa96)
+
+#### Register and Login (Validation)
+
+![login-register-failed-case](https://github.com/eldrians/moovd-angular/assets/91566708/313254de-042a-4322-bf89-873e2efd7449)
+
+#### Search
+
+#### Sort
+
+#### Detail
+
+#### Pagination
+
+#### Responsive
+
+#### Logout
+
 ## Setup & Run
 
 ### Setup
@@ -64,24 +88,4 @@ run the json-server(terminal 2)
 ```
   npx jest test:coverage
 ```
-
-## Documentation
-
-### Demo
-
-#### Register and Login (Sucess)
-
-#### Register and Login (Unsuccess) *with validation
-
-#### Search
-
-#### Sort
-
-#### Detail
-
-#### Pagination
-
-#### Responsive
-
-#### Logout
 
