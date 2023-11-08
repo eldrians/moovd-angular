@@ -2,11 +2,12 @@ import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
 
+import { ButtonComponent } from "../index";
+
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 import Swal from "sweetalert2";
-import { ButtonComponent } from "../index";
 
 @Component({
   selector: "app-header",
