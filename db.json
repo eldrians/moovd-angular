@@ -21,6 +21,24 @@
   ],
   "data": [
     {
+      "device_id": "D-1566",
+      "device_type": "Asset",
+      "timestamp": "31-08-2022 10.20",
+      "location": "L4"
+    },
+    {
+      "device_id": "D-1566",
+      "device_type": "Asset",
+      "timestamp": "31-08-2022 10.30",
+      "location": "L1"
+    },
+    {
+      "device_id": "D-1566",
+      "device_type": "Asset",
+      "timestamp": "31-08-2022 10.35",
+      "location": "L1"
+    },
+    {
       "device_id": "D-1567",
       "device_type": "Aircraft",
       "timestamp": "31-08-2022 10.05",

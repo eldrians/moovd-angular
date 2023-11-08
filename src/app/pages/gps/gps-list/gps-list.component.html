@@ -47,7 +47,10 @@
             </th>
           </tr>
           <tr
-            *ngFor="let item of filteredGpsLists"
+            *ngFor="
+              let item of filteredGpsLists
+                | paginate : { itemsPerPage: 5, currentPage: p }
+            "
             tabindex="0"
             class="focus:outline-none h-16 border"
           >
@@ -73,6 +76,9 @@
           </tr>
         </tbody>
       </table>
+      <div class="flex justify-center items-center pt-12">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
     </div>
   </div>
 </div>

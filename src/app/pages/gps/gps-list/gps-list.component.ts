@@ -7,6 +7,7 @@ import { ListGpsInterface } from 'src/app/core/interfaces';
 import { GpsService } from 'src/app/core/services';
 import { ButtonComponent, SortIconComponent } from 'src/app/shared/components';
 
+import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
   selector: 'app-gps-list',
   standalone: true,
@@ -16,10 +17,12 @@ import { ButtonComponent, SortIconComponent } from 'src/app/shared/components';
     FormsModule,
     ButtonComponent,
     SortIconComponent,
+    NgxPaginationModule,
   ],
   templateUrl: './gps-list.component.html',
 })
 export class GpsListComponent implements OnInit {
+  p: number = 1;
   _filtertext: string = '';
 
   gpsLists: ListGpsInterface[] = [];
