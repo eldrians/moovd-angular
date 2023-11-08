@@ -23,6 +23,7 @@ show alert success
 #### Register and Login (Validation)
 
 show validation if had uncorrect input or false account
+
 ![login-register-failed-case](https://github.com/eldrians/moovd-angular/assets/91566708/313254de-042a-4322-bf89-873e2efd7449)
 
 #### Live Search
@@ -36,6 +37,7 @@ show validation if had uncorrect input or false account
 #### Detail GPS
 
 show chart and other detail information
+
 ![detail](https://github.com/eldrians/moovd-angular/assets/91566708/c23a7955-fe9b-409e-b6bb-659a328c5914)
 
 #### Pagination
@@ -45,21 +47,25 @@ show chart and other detail information
 #### Responsive
 
 Responsive for monitor, laptop, tablet, and smartphone
+
 ![responsive](https://github.com/eldrians/moovd-angular/assets/91566708/976d5d6b-b83d-4595-8758-3e678e9b69f4)
 
 #### Logout (with guard)
 
 The user can't access /gps because there is a guard in the route.
+
 ![logout](https://github.com/eldrians/moovd-angular/assets/91566708/34cb81c4-cbb1-4d30-b507-8b5977e7466b)
 
 #### PWA
 
 App can run in offline mode
+
 ![pwa](https://github.com/eldrians/moovd-angular/assets/91566708/a49599c4-c8a0-48cb-b75e-df5ba533b23c)
 
 #### Test Coverage
 
 The test coverage is not 100%, but at least it has been done using Jest with the different folder structure outside the app.
+
 ![image](https://github.com/eldrians/moovd-angular/assets/91566708/309752a5-de55-464c-8749-4fbbf1a96c22)
 
 ## Setup & Run
