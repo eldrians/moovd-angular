@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { passwordMatchValidator } from 'src/app/shared/directives/password-match.directive';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
+import { ButtonComponent } from 'src/app/shared/components';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,7 @@ import Swal from 'sweetalert2';
     ReactiveFormsModule,
     RouterModule,
     SweetAlert2Module,
+    ButtonComponent,
   ],
   templateUrl: './register.component.html',
 })

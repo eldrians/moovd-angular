@@ -4,26 +4,22 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ListGpsInterface } from 'src/app/core/interfaces/gps.model';
 import { GpsService } from 'src/app/core/services';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faSort,
-  faSortUp,
-  faSortDown,
-  faMagnifyingGlass,
-} from '@fortawesome/free-solid-svg-icons';
+import { ButtonComponent } from 'src/app/shared/components';
+import { SortIconComponent } from 'src/app/shared/components/sort-icon/sort-icon.component';
 
 @Component({
   selector: 'app-gps-list',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    RouterLink,
+    FormsModule,
+    ButtonComponent,
+    SortIconComponent,
+  ],
   templateUrl: './gps-list.component.html',
 })
 export class GpsListComponent implements OnInit {
-  faSort = faSort;
-  faSortUp = faSortUp;
-  faSortDown = faSortDown;
-  faMagnifyingGlass = faMagnifyingGlass;
-
   _filtertext: string = '';
 
   gpsLists: ListGpsInterface[] = [];

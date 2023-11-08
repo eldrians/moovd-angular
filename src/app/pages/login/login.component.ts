@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
+import { ButtonComponent } from 'src/app/shared/components';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import Swal from 'sweetalert2';
     ReactiveFormsModule,
     RouterModule,
     SweetAlert2Module,
+    ButtonComponent,
   ],
   templateUrl: './login.component.html',
 })

@@ -12,18 +12,11 @@
         <div>
           <input
             type="text"
-            class="py-2 px-4 text-sm border rounded"
-            placeholder="search..."
+            class="py-2 px-4 text-md placeholder-darkMoovd/70 border text-darkMoovd border-darkMoovd rounded focus:outline-none"
+            placeholder="Search..."
             [(ngModel)]="filterText"
           />
         </div>
-        <a>
-          <div
-            class="cursor-pointer py-2 px-4 text-sm font-semibold text-white bg-secondaryMoovd hover:bg-pink-900 rounded"
-          >
-            <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
-          </div>
-        </a>
       </div>
     </div>
     <div class="overflow-x-auto">
@@ -36,14 +29,7 @@
               <div class="flex items-center pl-5">
                 <button (click)="sortClickDeviceId()">
                   Device ID
-                  <fa-icon
-                    *ngIf="clickNumberDeviceId == 1"
-                    [icon]="faSortDown"
-                  ></fa-icon>
-                  <fa-icon
-                    *ngIf="clickNumberDeviceId == 0"
-                    [icon]="faSort"
-                  ></fa-icon>
+                  <sort-icon [timesClicked]="clickNumberDeviceId"> </sort-icon>
                 </button>
               </div>
             </th>
@@ -51,18 +37,8 @@
               <div class="flex items-center">
                 <button (click)="sortClickDeviceType()">
                   Device Type
-                  <fa-icon
-                    *ngIf="clickNumberDeviceType == 1"
-                    [icon]="faSortDown"
-                  ></fa-icon>
-                  <fa-icon
-                    *ngIf="clickNumberDeviceType == 2"
-                    [icon]="faSortUp"
-                  ></fa-icon>
-                  <fa-icon
-                    *ngIf="clickNumberDeviceType == 0"
-                    [icon]="faSort"
-                  ></fa-icon>
+                  <sort-icon [timesClicked]="clickNumberDeviceType">
+                  </sort-icon>
                 </button>
               </div>
             </th>
@@ -90,12 +66,12 @@
               </div>
             </td>
             <td>
-              <button
-                class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none"
-                [routerLink]="['/gps', item.device_id]"
+              <app-button
+                text="View"
+                [forLink]="true"
+                deviceId="{{ item.device_id }}"
               >
-                View
-              </button>
+              </app-button>
             </td>
           </tr>
         </tbody>
