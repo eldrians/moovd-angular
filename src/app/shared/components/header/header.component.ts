@@ -4,11 +4,13 @@ import { Router, RouterModule } from "@angular/router";
 
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-header",
   standalone: true,
-  imports: [CommonModule, RouterModule, FontAwesomeModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule, SweetAlert2Module],
   templateUrl: "./header.component.html",
 })
 export class HeaderComponent implements OnInit {
@@ -28,7 +30,21 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    sessionStorage.clear();
-    this.router.navigate(["login"]);
+    Swal.fire({
+      title: "Do you want to logout?",
+      showCancelButton: true,
+      confirmButtonText: "Logout",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: "info",
+          title: "Logout!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        sessionStorage.clear();
+        this.router.navigate(["login"]);
+      }
+    });
   }
 }
