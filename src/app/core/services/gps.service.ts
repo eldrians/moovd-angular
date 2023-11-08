@@ -11,7 +11,6 @@ import {
   providedIn: 'root',
 })
 export class GpsService {
-  url: string = '/assets/gps_data.json';
   private baseUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) {}
 
