@@ -23,10 +23,10 @@ import { CommonModule } from '@angular/common';
       </div>
     </div>
     <div
-      class="w-full flex flex-col lg:flex-row"
+      class="w-full flex justify-center items-center"
       *ngIf="isLoginOrRegisterRoute()"
     >
-      <div class="w-full">
+      <div class="w-full h-screen">
         <router-outlet class="z-10"></router-outlet>
       </div>
     </div>
