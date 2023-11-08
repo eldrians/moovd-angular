@@ -1,27 +1,85 @@
-# MoovdAngular
+# Moovd - GPS List App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+Here are the tasks that I have completed.
 
-## Development server
+| Task                              | 
+| :-------------------------------- |
+| `Login Page`                      |
+| `Register Page`                   |
+| `Show GPS List`                   |
+| `Show GPS Details`                |
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Setup & Run
 
-## Code scaffolding
+### Setup
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+open your terminal and run this command :
 
-## Build
+```
+  git clone https://github.com/eldrians/simplidots.git
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+open the application and run this command too:
 
-## Running unit tests
+```
+  npm i
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+  ng serve
+```
 
-## Running end-to-end tests
+### Run App
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+run the application(terminal 1)
 
-## Further help
+```
+  npm run start
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+run the json-server(terminal 2)
+
+```
+  npm run start
+```
+
+### Run Test
+
+- test all file
+
+```
+  npm run test
+```
+
+- Test spesific file
+
+```
+  npx jest <file name>
+```
+
+- see coverage
+
+```
+  npx jest test:coverage
+```
+
+## Documentation
+
+### Demo
+
+#### Register and Login (Sucess)
+
+#### Register and Login (Unsuccess) *with validation
+
+#### Search
+
+#### Sort
+
+#### Detail
+
+#### Pagination
+
+#### Responsive
+
+#### Logout
+
