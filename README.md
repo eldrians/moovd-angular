@@ -105,7 +105,19 @@ run the application(terminal 1)
 run the json-server(terminal 2)
 
 ```
-  npm run start
+  json-server --watch db.json
+```
+
+### Run App With PWA
+
+```
+  ng build
+```
+
+go to dist, and open integrated terminal then write this command
+
+```
+  http-server -o
 ```
 
 ### Run Test
