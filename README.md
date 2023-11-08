@@ -35,6 +35,12 @@ Here are the tasks that I have completed.
 
 #### Logout
 
+#### Coverage
+
+![image](https://github.com/eldrians/moovd-angular/assets/91566708/309752a5-de55-464c-8749-4fbbf1a96c22)
+
+
+
 ## Setup & Run
 
 ### Setup
@@ -86,6 +92,6 @@ run the json-server(terminal 2)
 - see coverage
 
 ```
-  npx jest test:coverage
+  npx jest --coverage
 ```
 
