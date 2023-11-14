@@ -38,12 +38,12 @@ export class LoginComponent {
   ) {}
 
   login() {
-    const { email, password } = this.loginForm.value;
-    this.authServices.getUserByEmail(email as string).subscribe(
+    const postData = { ...this.loginForm.value };
+    this.authServices.getUserByEmail(postData.email as string).subscribe(
       (res) => {
-        if (res.length > 0 && res[0].password === password) {
-          localStorage.setItem('email', email as string);
-          localStorage.setItem('password', password as string);
+        if (res.length > 0 && res[0].password === postData.password) {
+          localStorage.setItem('email', postData.email as string);
+          localStorage.setItem('password', postData.password as string);
           SuccessAlert('Login Success');
           this.router.navigate(['/gps']);
         } else {

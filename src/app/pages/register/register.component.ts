@@ -47,14 +47,6 @@ export class RegisterComponent {
     private router: Router
   ) {}
 
-  get fullName() {
-    return this.registerForm.controls['fullName'];
-  }
-
-  get email() {
-    return this.registerForm.controls['email'];
-  }
-
   get password() {
     return this.registerForm.controls['password'];
   }
@@ -63,10 +55,9 @@ export class RegisterComponent {
     return this.registerForm.controls['confirmPassword'];
   }
 
-  submitDetails() {
+  register() {
     const postData = { ...this.registerForm.value };
     delete postData.confirmPassword;
-    console.log(postData);
     this.authService.registerUser(postData as User).subscribe(
       (res) => {
         SuccessAlert('Account Registered');
