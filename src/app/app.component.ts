@@ -35,6 +35,7 @@ import { HeaderComponent, SidebarComponent } from './shared/components';
 })
 export class AppComponent {
   constructor(private router: Router) {}
+
   isMainRoute(): boolean {
     return this.router.url.startsWith('/gps');
   }

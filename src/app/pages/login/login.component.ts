@@ -48,9 +48,13 @@ export class LoginComponent {
   loginUser() {
     const { email, password } = this.loginForm.value;
     this.authServices.getUserByEmail(email as string).subscribe(
-      (response) => {
-        if (response.length > 0 && response[0].password === password) {
-          sessionStorage.setItem('email', email as string);
+      (res) => {
+        console.log('res email->', res);
+        console.log('res length->', res.length);
+
+        if (res.length > 0 && res[0].password === password) {
+          localStorage.setItem('email', email as string);
+          localStorage.setItem('password', res[0].password as string);
           Swal.fire({
             icon: 'success',
             title: 'Login Sucess',

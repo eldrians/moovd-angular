@@ -50,7 +50,8 @@ export class HeaderComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
-        sessionStorage.clear();
+        localStorage.removeItem("email");
+        localStorage.removeItem("password");
         this.router.navigate(["login"]);
       }
     });
