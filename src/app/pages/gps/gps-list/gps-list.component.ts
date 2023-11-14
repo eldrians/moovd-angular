@@ -26,64 +26,57 @@ import { NgxPaginationModule } from 'ngx-pagination';
 export class GpsListComponent implements OnInit {
   faMagnifyingGlass = faMagnifyingGlass;
   faEye = faEye;
-  p: number = 1;
-  _filtertext: string = '';
+  currentPage: number = 1;
 
   gpsLists: ListGpsInterface[] = [];
-  filteredGpsLists: ListGpsInterface[] = []; //changeable
+  filteredGpsLists: ListGpsInterface[] = []; // final data
 
-  clickNumberDeviceType: number = 0;
-  clickNumberDeviceId: number = 0;
+  timesClickedDeviceType: number = 0;
+  timesClickedDeviceId: number = 0;
 
-  get filterText() {
-    return this._filtertext;
-  }
+  _search: string = '';
 
-  set filterText(value: string) {
-    this._filtertext = value;
-    this.filteredGpsLists = this.filterGps(value);
+  set search(input: string) {
+    this._search = input;
+    this.filteredGpsLists = this.searchGps(input);
   }
 
   constructor(private gpsServices: GpsService) {}
 
   ngOnInit(): void {
-    this.getGpsLists();
+    this.loadGpsLists();
     this.filteredGpsLists = this.gpsLists;
   }
-  getGpsLists() {
+
+  loadGpsLists() {
     this.gpsServices.getGpsLists().subscribe((res: ListGpsInterface[]) => {
       this.gpsLists = res;
       this.filteredGpsLists = res.reverse();
     });
   }
 
-  sortClickDeviceType() {
-    this.clickNumberDeviceId = 0;
-    this.clickNumberDeviceType += 1;
-    if (this.clickNumberDeviceType === 3) {
-      this.clickNumberDeviceType = 0;
-    }
-
-    if (this.clickNumberDeviceType == 1) {
-      this.filteredGpsLists = [...this.gpsLists].sort((a, b) =>
-        a.device_type.localeCompare(b.device_type)
-      );
-    } else if (this.clickNumberDeviceType == 2) {
-      this.filteredGpsLists = [...this.gpsLists].sort((a, b) =>
-        b.device_type.localeCompare(a.device_type)
-      );
+  searchGps(input: string) {
+    if (this.gpsLists.length === 0 || this.search === '') {
+      return this.gpsLists;
     } else {
-      this.filteredGpsLists = this.gpsLists;
+      const searchTerm = input.toLowerCase();
+      return this.gpsLists.filter((gps) => {
+        return (
+          gps.device_type.toLowerCase().includes(searchTerm) ||
+          gps.device_id.toLowerCase().includes(searchTerm)
+        );
+      });
     }
   }
 
-  sortClickDeviceId() {
-    this.clickNumberDeviceType = 0;
-    this.clickNumberDeviceId += 1;
-    if (this.clickNumberDeviceId === 2) {
-      this.clickNumberDeviceId = 0;
+  sortDeviceId() {
+    this.timesClickedDeviceType = 0;
+
+    this.timesClickedDeviceId++;
+    if (this.timesClickedDeviceId > 1) {
+      this.timesClickedDeviceId = 0;
     }
-    if (this.clickNumberDeviceId == 1) {
+    if (this.timesClickedDeviceId == 1) {
       this.filteredGpsLists = [...this.gpsLists].sort((a, b) =>
         a.device_id.localeCompare(b.device_id)
       );
@@ -92,17 +85,23 @@ export class GpsListComponent implements OnInit {
     }
   }
 
-  filterGps(filterTerm: string) {
-    if (this.gpsLists.length === 0 || this.filterText === '') {
-      return this.gpsLists;
+  sortDeviceType() {
+    this.timesClickedDeviceId = 0;
+    this.timesClickedDeviceType++;
+    if (this.timesClickedDeviceType > 2) {
+      this.timesClickedDeviceType = 0;
+    }
+
+    if (this.timesClickedDeviceType == 1) {
+      this.filteredGpsLists = [...this.gpsLists].sort((a, b) =>
+        a.device_type.localeCompare(b.device_type)
+      );
+    } else if (this.timesClickedDeviceType == 2) {
+      this.filteredGpsLists = [...this.gpsLists].sort((a, b) =>
+        b.device_type.localeCompare(a.device_type)
+      );
     } else {
-      const searchTerm = filterTerm.toLowerCase();
-      return this.gpsLists.filter((gps) => {
-        return (
-          gps.device_type.toLowerCase().includes(searchTerm) ||
-          gps.device_id.toLowerCase().includes(searchTerm)
-        );
-      });
+      this.filteredGpsLists = this.gpsLists;
     }
   }
 }

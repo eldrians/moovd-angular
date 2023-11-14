@@ -24,7 +24,7 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
   templateUrl: './gps-detail.component.html',
 })
 export class GpsDetailComponent implements OnInit {
-  gpsIdData: string = '';
+  deviceId: string = '';
   gpsDetail: DetailGpsInterface | undefined;
   chartOptions: ChartInterface | undefined;
 
@@ -34,8 +34,8 @@ export class GpsDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.gpsIdData = this.router.snapshot.params['id'];
-    this.getGpsDetail(this.gpsIdData);
+    this.deviceId = this.router.snapshot.params['id'];
+    this.getGpsDetail(this.deviceId);
   }
 
   getGpsDetail(deviceId: string) {

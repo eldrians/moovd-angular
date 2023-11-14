@@ -16,7 +16,7 @@
             type="text"
             class="py-2 px-4 text-md placeholder-darkMoovd/70 border text-darkMoovd border-darkMoovd rounded focus:outline-none"
             placeholder="Search..."
-            [(ngModel)]="filterText"
+            [(ngModel)]="search"
           />
           <fa-icon
             [icon]="faMagnifyingGlass"
@@ -33,17 +33,17 @@
           >
             <th>
               <div class="flex items-center pl-5">
-                <button (click)="sortClickDeviceId()">
+                <button (click)="sortDeviceId()">
                   Device ID
-                  <sort-icon [timesClicked]="clickNumberDeviceId"> </sort-icon>
+                  <sort-icon [timesClicked]="timesClickedDeviceId"> </sort-icon>
                 </button>
               </div>
             </th>
             <th>
               <div class="flex items-center">
-                <button (click)="sortClickDeviceType()">
+                <button (click)="sortDeviceType()">
                   Device Type
-                  <sort-icon [timesClicked]="clickNumberDeviceType">
+                  <sort-icon [timesClicked]="timesClickedDeviceType">
                   </sort-icon>
                 </button>
               </div>
@@ -55,7 +55,7 @@
           <tr
             *ngFor="
               let item of filteredGpsLists
-                | paginate : { itemsPerPage: 5, currentPage: p }
+                | paginate : { itemsPerPage: 5, currentPage: currentPage }
             "
             tabindex="0"
             class="focus:outline-none h-16 border"
@@ -86,7 +86,9 @@
         </tbody>
       </table>
       <div class="flex justify-center items-center pt-12">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls
+          (pageChange)="currentPage = $event"
+        ></pagination-controls>
       </div>
     </div>
   </div>
