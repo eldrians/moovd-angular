@@ -8,8 +8,8 @@ import { GpsService } from 'src/app/core/services';
 import { SortIconComponent } from 'src/app/shared/components';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { faMagnifyingGlass, faEye } from '@fortawesome/free-solid-svg-icons';
+import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
   selector: 'app-gps-list',
   standalone: true,
