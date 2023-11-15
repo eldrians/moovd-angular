@@ -17,7 +17,6 @@ export class GpsService {
     });
     return this.http.get<IGps[]>(`${this.baseUrl}/gps`, { headers }).pipe(
       map((data) => {
-        console.log(data);
         const groupedData: ListGpsInterface[] = data.reduce(
           (acc: any, item) => {
             if (!acc[item.device_id]) {
@@ -36,7 +35,10 @@ export class GpsService {
   }
 
   getGpsDetail(deviceId: string): Observable<DetailGpsInterface[]> {
-    return this.http.get<IGps[]>(`${this.baseUrl}/gps`).pipe(
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<IGps[]>(`${this.baseUrl}/gps`, { headers }).pipe(
       map((data) => {
         const groupedData: Map<string, DetailGpsInterface> = data.reduce(
           (acc, item) => {
