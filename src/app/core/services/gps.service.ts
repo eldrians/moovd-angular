@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
@@ -8,12 +8,16 @@ import { DetailGpsInterface, IGps, ListGpsInterface } from '../interfaces';
   providedIn: 'root',
 })
 export class GpsService {
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'http://localhost:3001';
   constructor(private http: HttpClient) {}
 
   getGpsLists(): Observable<ListGpsInterface[]> {
-    return this.http.get<IGps[]>(`${this.baseUrl}/data`).pipe(
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<IGps[]>(`${this.baseUrl}/gps`, { headers }).pipe(
       map((data) => {
+        console.log(data);
         const groupedData: ListGpsInterface[] = data.reduce(
           (acc: any, item) => {
             if (!acc[item.device_id]) {
@@ -32,7 +36,7 @@ export class GpsService {
   }
 
   getGpsDetail(deviceId: string): Observable<DetailGpsInterface[]> {
-    return this.http.get<IGps[]>(`${this.baseUrl}/data`).pipe(
+    return this.http.get<IGps[]>(`${this.baseUrl}/gps`).pipe(
       map((data) => {
         const groupedData: Map<string, DetailGpsInterface> = data.reduce(
           (acc, item) => {
