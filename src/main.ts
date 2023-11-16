@@ -30,7 +30,7 @@ bootstrapApplication(AppComponent, {
         loadChildren: () =>
           import('./app/pages/gps/gps.routes').then((r) => r.GPS_ROUTES),
       },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: '', redirectTo: 'gps', pathMatch: 'full' },
       { path: '**', redirectTo: 'gps', pathMatch: 'full' },
     ]),
     provideServiceWorker('ngsw-worker.js', {

@@ -16,7 +16,12 @@ export class AuthService {
     return this.http.post<User>(`${this.baseUrl}/user`, userDetails);
   }
 
+  // getUserByEmail(email: string): Observable<User[]> {
+  //   return this.http.get<User[]>(`${this.baseUrl}/user/${email}`);
+  // }
+
+  //json-server
   getUserByEmail(email: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}/user/${email}`);
+    return this.http.get<User[]>(`${this.baseUrl}/user?email=${email}`);
   }
 }

@@ -7,11 +7,11 @@ export const GPS_ROUTES: Routes = [
   {
     path: '',
     component: GpsListComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: ':id',
     component: GpsDetailComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
 ];

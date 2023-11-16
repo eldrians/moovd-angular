@@ -62,16 +62,16 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "moovd-angular:build",
             "proxyConfig": "src/proxy.conf.json",
-            "port":4300
+            "port": 4300,
+            "buildTarget": "moovd-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "moovd-angular:build:production"
+              "buildTarget": "moovd-angular:build:production"
             },
             "development": {
-              "browserTarget": "moovd-angular:build:development"
+              "buildTarget": "moovd-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "moovd-angular:build"
+            "buildTarget": "moovd-angular:build"
           }
         }
       }
