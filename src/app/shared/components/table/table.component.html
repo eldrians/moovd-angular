@@ -1,1 +1,70 @@
-<p>table works!</p>
+<table class="w-full whitespace-nowrap text-darkMoovd">
+  <tbody>
+    <tr
+      class="focus:outline-none h-16 border border-graykMoovd font-bold text-xs md:text-base"
+    >
+      <th *ngFor="let column of columns">
+        <div *ngIf="column.fieldName != 'action'">
+          <div class="flex items-center pl-5" *ngIf="enableSort">
+            <button (click)="sortData(column.fieldName)">
+              {{ column.header }}
+              <sort-icon
+                [timesClicked]="timesClicked"
+                *ngIf="column.fieldName == clickedFieldName"
+              >
+              </sort-icon>
+              <sort-icon
+                [timesClicked]="0"
+                *ngIf="column.fieldName != clickedFieldName"
+              >
+              </sort-icon>
+            </button>
+          </div>
+          <div class="flex items-center pl-5 uppercase" *ngIf="!enableSort">
+            {{ column.header }}
+          </div>
+        </div>
+        <div *ngIf="column.fieldName == 'action'">
+          <div class="flex items-center pl-5 uppercase">
+            {{ column.header }}
+          </div>
+        </div>
+      </th>
+    </tr>
+    <tr
+      *ngFor="
+        let item of tableData
+          | paginate : { itemsPerPage: 5, currentPage: currentPage }
+      "
+      tabindex="0"
+      class="focus:outline-none h-16 border"
+    >
+      <td *ngFor="let column of columns">
+        <div
+          *ngIf="column.fieldName == 'action' && showActionButton"
+          class="flex items-center pl-5"
+        >
+          <a (click)="viewData(item)" class="cursor-pointer">
+            <fa-icon
+              [icon]="faEye"
+              class="text-lg md:text-xl text-primaryMoovd"
+            ></fa-icon>
+          </a>
+        </div>
+        <div
+          *ngIf="column.fieldName != 'action'"
+          class="flex items-center pl-5"
+        >
+          <p class="text-sm md:text-base font-medium mr-2">
+            {{ item[column.fieldName] }}
+          </p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="flex justify-center items-center pt-12">
+  <pagination-controls
+    (pageChange)="currentPage = $event"
+  ></pagination-controls>
+</div>

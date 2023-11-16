@@ -1,15 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { ListGpsInterface } from 'src/app/core/interfaces';
 import { GpsService } from 'src/app/core/services';
-import { SortIconComponent, TableComponent } from 'src/app/shared/components';
+import { TableComponent } from 'src/app/shared/components';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faMagnifyingGlass, faEye } from '@fortawesome/free-solid-svg-icons';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-gps-list',
   standalone: true,
@@ -17,8 +16,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     RouterLink,
     FormsModule,
-    SortIconComponent,
-    NgxPaginationModule,
     FontAwesomeModule,
     TableComponent,
   ],
@@ -26,27 +23,46 @@ import { NgxPaginationModule } from 'ngx-pagination';
 })
 export class GpsListComponent implements OnInit {
   faMagnifyingGlass = faMagnifyingGlass;
-  faEye = faEye;
-  currentPage: number = 1;
 
   gpsLists: ListGpsInterface[] = [];
   filteredGpsLists: ListGpsInterface[] = []; // final data
 
+  timesClicked: number = 0;
   timesClickedDeviceType: number = 0;
   timesClickedDeviceId: number = 0;
 
   _search: string = '';
+
+  columns: { header: string; fieldName: string }[] = [
+    { header: 'Device ID', fieldName: 'device_id' },
+    { header: 'Device Type', fieldName: 'device_type' },
+    { header: 'Action', fieldName: 'action' },
+  ];
 
   set search(input: string) {
     this._search = input;
     this.filteredGpsLists = this.searchGps(input);
   }
 
-  constructor(private gpsServices: GpsService) {}
+  constructor(private gpsServices: GpsService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadGpsLists();
     this.filteredGpsLists = this.gpsLists;
+  }
+
+  viewGps(gpsData: any) {
+    this.router.navigate(['gps/', gpsData.device_id]);
+  }
+
+  sortGps(deviceType: string) {
+    if (deviceType == 'device_id') {
+      this.timesClicked = this.sortDeviceId();
+    } else if (deviceType == 'device_type') {
+      this.timesClicked = this.sortDeviceType();
+    } else {
+      this.filteredGpsLists = this.gpsLists;
+    }
   }
 
   loadGpsLists() {
@@ -84,6 +100,8 @@ export class GpsListComponent implements OnInit {
     } else {
       this.filteredGpsLists = this.gpsLists;
     }
+
+    return this.timesClickedDeviceId;
   }
 
   sortDeviceType() {
@@ -104,5 +122,7 @@ export class GpsListComponent implements OnInit {
     } else {
       this.filteredGpsLists = this.gpsLists;
     }
+
+    return this.timesClickedDeviceType;
   }
 }
