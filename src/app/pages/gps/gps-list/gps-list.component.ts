@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 
 import { ListGpsInterface } from 'src/app/core/interfaces';
 import { GpsService } from 'src/app/core/services';
-import { SortIconComponent } from 'src/app/shared/components';
+import { SortIconComponent, TableComponent } from 'src/app/shared/components';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMagnifyingGlass, faEye } from '@fortawesome/free-solid-svg-icons';
@@ -20,6 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SortIconComponent,
     NgxPaginationModule,
     FontAwesomeModule,
+    TableComponent,
   ],
   templateUrl: './gps-list.component.html',
 })
